@@ -93,6 +93,7 @@ $.fn.socialfeed = function(options)
            $.each(json.data,function(){
             var element = this,
             post = {};
+		console.log(element);
             if (element.message || element.story){
                 var text = element.story, url = 'http://facebook.com/' + element.from.id
                 if (element.message)
@@ -102,6 +103,7 @@ $.fn.socialfeed = function(options)
                 if (options.show_media){
                     if (element.picture){
                         post.attachment = '<img class="attachment" src="' + element.picture.replace('_s.', '_b.') + '" />';
+			post.attachment = post.attachment.replace('s130x130/','');
                     }
                 }
                 post.dt_create = moment(element.created_time);
